@@ -1,0 +1,23 @@
+<%if(success){%>
+    <%success.forEach(msg=>{%>
+        <div id="my-alert" class="alert alert-success d-flex align-items-center alert-dismissible fade show">
+            <span class="material-symbols-outlined px-3" style="font-weight: bolder;font-size: 32px">check_circle</span>
+            <div>
+                <div style="font-size: 18px"><strong><%=msg%></strong></div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    <%})%>
+<%}%>
+
+<%if(error){%>
+    <%error.forEach(msg=>{%>
+        <div id="my-alert" class="alert alert-danger d-flex align-items-center alert-dismissible fade show">
+            <span class="material-symbols-outlined px-3" style="font-weight: bolder;font-size: 36px">dangerous</span>
+            <div>
+                <div style="font-size: 18px"><strong><%=msg%></strong></div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    <%})%>
+<%}%>

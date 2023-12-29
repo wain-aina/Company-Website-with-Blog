@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Blog Single</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,700,700i&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/css/single.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<main id="main">
+
+    <!-- ======= Blog Section ======= -->
+    <section class="breadcrumbs">
+        <div class="container">
+
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Blog</h2>
+
+                <ol>
+                    <li><a href="/index">Home</a></li>
+                    <li><a href="/index">Blog</a></li>
+                    <li><%= postItem.title %></li>
+                </ol>
+            </div>
+
+        </div>
+    </section><!-- End Blog Section -->
+
+    <!-- ======= Blog Single Section ======= -->
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+
+                <div class="col-lg-8 entries">
+
+                    <article class="entry entry-single">
+
+                        <div class="entry-img">
+                            <img src="/<%= postItem.dayPhoto %>" alt="" class="img-fluid">
+                        </div>
+
+                        <h2 class="entry-title">
+                            <a href="blog-single.html"><%= postItem.title %></a>
+                        </h2>
+
+                        <div class="entry-meta">
+                            <ul>
+                                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href=""><%=postItem.lastName%>, <%=postItem.firstName%></a></li>
+                                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href=""><time><%= postItem.day %></time></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="entry-content">
+                            <p style="white-space: pre-line">
+                                <%= postItem.content %>
+                            </p>
+
+                        </div>
+
+                        <div class="entry-footer">
+                            <i class="bi bi-tags"></i>
+                            <ul class="tags">
+                                <%postItem.tags.forEach(x => {%>
+                                    <li><a href="#"><%=x%></a></li>
+                                <%})%>
+                            </ul>
+                        </div>
+                        <div class="like_form">
+                            <div class="opinion_like post_like mx-3">
+                                <button class="btn-opinion green" id="green"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>
+                                <div class="opinion_count">
+                                    <p><%=postItem.likeCount%></p>
+                                </div>
+                            </div>
+                            <div class="opinion_dislike post_like mx-3">
+                                <button class="btn-opinion red" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>
+                                <div class="opinion_count">
+                                    <p><%=postItem.dislikeCount%></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </article><!-- End blog entry -->
+
+                    <div class="blog-author d-flex align-items-center">
+                        <img src="/<%= postItem.profilePhoto %>" class="rounded-circle float-left" alt="">
+                        <div>
+                            <h4><%= postItem.firstName %></h4>
+                            <p class="">Email: <%=postItem.email%></p>
+                            <p>
+                                I feel: <%= postItem.mood %>
+                            </p>
+                        </div>
+                    </div><!-- End blog author bio -->
+
+                    <div class="blog-comments">
+
+
+
+                    </div><!-- End blog comments -->
+
+                </div><!-- End blog entries list -->
+
+                <div class="col-lg-4">
+
+                    <div class="sidebar">
+
+                        <h3 class="sidebar-title">Search</h3>
+                        <div class="sidebar-item search-form">
+                            <form action="">
+                                <input type="text">
+                                <button type="submit"><i class="bi bi-search"></i></button>
+                            </form>
+                        </div><!-- End sidebar search formn-->
+
+                        <h3 class="sidebar-title">Categories</h3>
+                        <div class="sidebar-item categories">
+                            <ul>
+                                <li><a>Cyber Security <span>(<%= cyberSec %>)</span></a></li>
+                                <li><a>Data Science <span>(<%= datasci %>)</span></a></li>
+                                <li><a>Training <span>(<%= training %>)</span></a></li>
+                                <li><a>Governance <span>(<%= gov %>)</span></a></li>
+                                <li><a>Project Management <span>(<%= proj %>)</span></a></li>
+                                <li><a>Business & Finance <span>(<%= bcom %>)</span></a></li>
+                            </ul>
+                        </div><!-- End sidebar categories-->
+
+                        <h3 class="sidebar-title">Recent Posts</h3>
+                        <%big5.map(x => {%>
+                        <div class="sidebar-item recent-posts">
+                            <div class="post-item clearfix">
+                                <a href="/<%= x.title %>"><img src="/<%= x.dayPhoto %>" alt=""></a>
+                                <h4><a href="/<%= x.title %>"><%= x.title %></a></h4>
+                                <time datetime="2020-01-01"><%= x.day %></time>
+                            </div>
+                        </div>
+                        <%})%>
+                        <!-- End sidebar recent posts-->
+
+                    </div><!-- End sidebar -->
+                    <div class="submission">
+                        <form class="post_submission" action="/<%=postItem._id%>/submit" method="post">
+                            <button class="sub_button"
+                                <%if(postItem.isSubmitted){%>
+                                    style="background: limegreen"
+                                <%}%>
+                                type="submit"><span style="color: #fff">
+                                <%if(postItem.isSubmitted){%>
+                                    <span class="material-symbols-outlined">done</span><span>Submitted</span>
+                                <%} else {%>
+                                    Submit Post
+                                <%}%>
+                                </span>
+                            </button>
+                        </form>
+
+                        <form class="post_submission" action="/<%=postItem._id%>/remove" method="post">
+                            <button class="sub_button" <%if(!postItem.isSubmitted && !postItem.isRemoved){%>
+                                disabled style="opacity: 0.3"
+                            <%}%>
+                            <%if(postItem.isRemoved){%>
+                                style="background: red; opacity:0.6"
+                                <%}%>
+                                type="submit"><span style="color: #fff">
+                                <%if(postItem.isRemoved){%>
+                                    <span class="material-symbols-outlined">close</span><span>Post Removed</span>
+                                <%} else {%>
+                                    Remove Post
+                                <%}%>
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+
+                </div><!-- End blog sidebar -->
+
+            </div>
+
+        </div>
+    </section><!-- End Blog Single Section -->
+
+</main><!-- End #main -->
+
+
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/aos/aos.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+<!-- Template Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+</body>
+
+</html>
